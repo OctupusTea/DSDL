@@ -1,0 +1,172 @@
+#! /usr/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision - 10;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x1084830 .scope module, "adder_tb" "adder_tb" 2 3;
+ .timescale -9 -10;
+v0x10ac560_0 .var "a", 5 0;
+v0x10ac5e0_0 .var "b", 5 0;
+RS_0x7f9b72480888/0/0 .resolv tri, L_0x10acd50, L_0x10ad380, L_0x10adac0, L_0x10ae0f0;
+RS_0x7f9b72480888/0/4 .resolv tri, L_0x10ae740, L_0x10aee30, C4<zzzzzz>, C4<zzzzzz>;
+RS_0x7f9b72480888 .resolv tri, RS_0x7f9b72480888/0/0, RS_0x7f9b72480888/0/4, C4<zzzzzz>, C4<zzzzzz>;
+v0x10ac660_0 .net8 "sum", 5 0, RS_0x7f9b72480888; 6 drivers
+S_0x10836d0 .scope module, "binary_adder" "Binary_Adder" 2 10, 3 1, S_0x1084830;
+ .timescale 0 0;
+v0x10ac170_0 .net "a", 5 0, v0x10ac560_0; 1 drivers
+v0x10ac230_0 .net "b", 5 0, v0x10ac5e0_0; 1 drivers
+v0x10ac2d0 .array "carry", 0 5;
+v0x10ac2d0_0 .net v0x10ac2d0 0, 0 0, L_0x10aca30; 1 drivers
+v0x10ac2d0_1 .net v0x10ac2d0 1, 0 0, L_0x10ad190; 1 drivers
+v0x10ac2d0_2 .net v0x10ac2d0 2, 0 0, L_0x10ad7b0; 1 drivers
+v0x10ac2d0_3 .net v0x10ac2d0 3, 0 0, L_0x10adea0; 1 drivers
+v0x10ac2d0_4 .net v0x10ac2d0 4, 0 0, L_0x10ae4d0; 1 drivers
+v0x10ac2d0_5 .net v0x10ac2d0 5, 0 0, L_0x10aeb60; 1 drivers
+v0x10ac4e0_0 .alias "sum", 5 0, v0x10ac660_0;
+L_0x10acb30 .part v0x10ac560_0, 0, 1;
+L_0x10acc20 .part v0x10ac5e0_0, 0, 1;
+L_0x10acd50 .part/pv L_0x10ac8d0, 0, 1, 6;
+L_0x10ad240 .part v0x10ac560_0, 1, 1;
+L_0x10ad2e0 .part v0x10ac5e0_0, 1, 1;
+L_0x10ad380 .part/pv L_0x10acff0, 1, 1, 6;
+L_0x10ad860 .part v0x10ac560_0, 2, 1;
+L_0x10ad990 .part v0x10ac5e0_0, 2, 1;
+L_0x10adac0 .part/pv L_0x10ad610, 2, 1, 6;
+L_0x10adf50 .part v0x10ac560_0, 3, 1;
+L_0x10ae050 .part v0x10ac5e0_0, 3, 1;
+L_0x10ae0f0 .part/pv L_0x10add00, 3, 1, 6;
+L_0x10ae580 .part v0x10ac560_0, 4, 1;
+L_0x10ae620 .part v0x10ac5e0_0, 4, 1;
+L_0x10ae740 .part/pv L_0x10ae330, 4, 1, 6;
+L_0x10aec60 .part v0x10ac560_0, 5, 1;
+L_0x10aed90 .part v0x10ac5e0_0, 5, 1;
+L_0x10aee30 .part/pv L_0x10ae9c0, 5, 1, 6;
+S_0x10abb40 .scope module, "full_adder0" "Full_Adder" 3 8, 4 1, S_0x10836d0;
+ .timescale 0 0;
+L_0x10ac6e0 .functor XOR 1, L_0x10acb30, L_0x10acc20, C4<0>, C4<0>;
+L_0x10ac7a0 .functor AND 1, L_0x10acb30, L_0x10acc20, C4<1>, C4<1>;
+L_0x10ac8d0 .functor XOR 1, L_0x10ac6e0, C4<0>, C4<0>, C4<0>;
+L_0x10ac980 .functor AND 1, L_0x10ac6e0, C4<0>, C4<1>, C4<1>;
+L_0x10aca30 .functor XOR 1, L_0x10ac7a0, L_0x10ac980, C4<0>, C4<0>;
+v0x10abc30_0 .net "a", 0 0, L_0x10acb30; 1 drivers
+v0x10abcf0_0 .net "b", 0 0, L_0x10acc20; 1 drivers
+v0x10abd90_0 .net "carry_in", 0 0, C4<0>; 1 drivers
+v0x10abe30_0 .alias "carry_out", 0 0, v0x10ac2d0_0;
+v0x10abee0_0 .net "carry_temp0", 0 0, L_0x10ac7a0; 1 drivers
+v0x10abf60_0 .net "carry_temp1", 0 0, L_0x10ac980; 1 drivers
+v0x10abfe0_0 .net "sum", 0 0, L_0x10ac8d0; 1 drivers
+v0x10ac080_0 .net "sum_temp", 0 0, L_0x10ac6e0; 1 drivers
+S_0x10ab510 .scope module, "full_adder1" "Full_Adder" 3 9, 4 1, S_0x10836d0;
+ .timescale 0 0;
+L_0x10ace90 .functor XOR 1, L_0x10ad240, L_0x10ad2e0, C4<0>, C4<0>;
+L_0x10acef0 .functor AND 1, L_0x10ad240, L_0x10ad2e0, C4<1>, C4<1>;
+L_0x10acff0 .functor XOR 1, L_0x10ace90, L_0x10aca30, C4<0>, C4<0>;
+L_0x10ad130 .functor AND 1, L_0x10ace90, L_0x10aca30, C4<1>, C4<1>;
+L_0x10ad190 .functor XOR 1, L_0x10acef0, L_0x10ad130, C4<0>, C4<0>;
+v0x10ab600_0 .net "a", 0 0, L_0x10ad240; 1 drivers
+v0x10ab6c0_0 .net "b", 0 0, L_0x10ad2e0; 1 drivers
+v0x10ab760_0 .alias "carry_in", 0 0, v0x10ac2d0_0;
+v0x10ab800_0 .alias "carry_out", 0 0, v0x10ac2d0_1;
+v0x10ab8b0_0 .net "carry_temp0", 0 0, L_0x10acef0; 1 drivers
+v0x10ab930_0 .net "carry_temp1", 0 0, L_0x10ad130; 1 drivers
+v0x10ab9b0_0 .net "sum", 0 0, L_0x10acff0; 1 drivers
+v0x10aba50_0 .net "sum_temp", 0 0, L_0x10ace90; 1 drivers
+S_0x10aaee0 .scope module, "full_adder2" "Full_Adder" 3 10, 4 1, S_0x10836d0;
+ .timescale 0 0;
+L_0x10ad4b0 .functor XOR 1, L_0x10ad860, L_0x10ad990, C4<0>, C4<0>;
+L_0x10ad510 .functor AND 1, L_0x10ad860, L_0x10ad990, C4<1>, C4<1>;
+L_0x10ad610 .functor XOR 1, L_0x10ad4b0, L_0x10ad190, C4<0>, C4<0>;
+L_0x10ad750 .functor AND 1, L_0x10ad4b0, L_0x10ad190, C4<1>, C4<1>;
+L_0x10ad7b0 .functor XOR 1, L_0x10ad510, L_0x10ad750, C4<0>, C4<0>;
+v0x10aafd0_0 .net "a", 0 0, L_0x10ad860; 1 drivers
+v0x10ab090_0 .net "b", 0 0, L_0x10ad990; 1 drivers
+v0x10ab130_0 .alias "carry_in", 0 0, v0x10ac2d0_1;
+v0x10ab1d0_0 .alias "carry_out", 0 0, v0x10ac2d0_2;
+v0x10ab280_0 .net "carry_temp0", 0 0, L_0x10ad510; 1 drivers
+v0x10ab300_0 .net "carry_temp1", 0 0, L_0x10ad750; 1 drivers
+v0x10ab380_0 .net "sum", 0 0, L_0x10ad610; 1 drivers
+v0x10ab420_0 .net "sum_temp", 0 0, L_0x10ad4b0; 1 drivers
+S_0x10aa8b0 .scope module, "full_adder3" "Full_Adder" 3 11, 4 1, S_0x10836d0;
+ .timescale 0 0;
+L_0x10adbf0 .functor XOR 1, L_0x10adf50, L_0x10ae050, C4<0>, C4<0>;
+L_0x10adc50 .functor AND 1, L_0x10adf50, L_0x10ae050, C4<1>, C4<1>;
+L_0x10add00 .functor XOR 1, L_0x10adbf0, L_0x10ad7b0, C4<0>, C4<0>;
+L_0x10ade40 .functor AND 1, L_0x10adbf0, L_0x10ad7b0, C4<1>, C4<1>;
+L_0x10adea0 .functor XOR 1, L_0x10adc50, L_0x10ade40, C4<0>, C4<0>;
+v0x10aa9a0_0 .net "a", 0 0, L_0x10adf50; 1 drivers
+v0x10aaa60_0 .net "b", 0 0, L_0x10ae050; 1 drivers
+v0x10aab00_0 .alias "carry_in", 0 0, v0x10ac2d0_2;
+v0x10aaba0_0 .alias "carry_out", 0 0, v0x10ac2d0_3;
+v0x10aac50_0 .net "carry_temp0", 0 0, L_0x10adc50; 1 drivers
+v0x10aacd0_0 .net "carry_temp1", 0 0, L_0x10ade40; 1 drivers
+v0x10aad50_0 .net "sum", 0 0, L_0x10add00; 1 drivers
+v0x10aadf0_0 .net "sum_temp", 0 0, L_0x10adbf0; 1 drivers
+S_0x10aa280 .scope module, "full_adder4" "Full_Adder" 3 12, 4 1, S_0x10836d0;
+ .timescale 0 0;
+L_0x10adff0 .functor XOR 1, L_0x10ae580, L_0x10ae620, C4<0>, C4<0>;
+L_0x10ae200 .functor AND 1, L_0x10ae580, L_0x10ae620, C4<1>, C4<1>;
+L_0x10ae330 .functor XOR 1, L_0x10adff0, L_0x10adea0, C4<0>, C4<0>;
+L_0x10ae470 .functor AND 1, L_0x10adff0, L_0x10adea0, C4<1>, C4<1>;
+L_0x10ae4d0 .functor XOR 1, L_0x10ae200, L_0x10ae470, C4<0>, C4<0>;
+v0x10aa370_0 .net "a", 0 0, L_0x10ae580; 1 drivers
+v0x10aa430_0 .net "b", 0 0, L_0x10ae620; 1 drivers
+v0x10aa4d0_0 .alias "carry_in", 0 0, v0x10ac2d0_3;
+v0x10aa570_0 .alias "carry_out", 0 0, v0x10ac2d0_4;
+v0x10aa620_0 .net "carry_temp0", 0 0, L_0x10ae200; 1 drivers
+v0x10aa6a0_0 .net "carry_temp1", 0 0, L_0x10ae470; 1 drivers
+v0x10aa720_0 .net "sum", 0 0, L_0x10ae330; 1 drivers
+v0x10aa7c0_0 .net "sum_temp", 0 0, L_0x10adff0; 1 drivers
+S_0x1082570 .scope module, "full_adder5" "Full_Adder" 3 13, 4 1, S_0x10836d0;
+ .timescale 0 0;
+L_0x10ae830 .functor XOR 1, L_0x10aec60, L_0x10aed90, C4<0>, C4<0>;
+L_0x10ae890 .functor AND 1, L_0x10aec60, L_0x10aed90, C4<1>, C4<1>;
+L_0x10ae9c0 .functor XOR 1, L_0x10ae830, L_0x10ae4d0, C4<0>, C4<0>;
+L_0x10aeb00 .functor AND 1, L_0x10ae830, L_0x10ae4d0, C4<1>, C4<1>;
+L_0x10aeb60 .functor XOR 1, L_0x10ae890, L_0x10aeb00, C4<0>, C4<0>;
+v0x1084350_0 .net "a", 0 0, L_0x10aec60; 1 drivers
+v0x10a9d80_0 .net "b", 0 0, L_0x10aed90; 1 drivers
+v0x10a9e20_0 .alias "carry_in", 0 0, v0x10ac2d0_4;
+v0x10a9ec0_0 .alias "carry_out", 0 0, v0x10ac2d0_5;
+v0x10a9f70_0 .net "carry_temp0", 0 0, L_0x10ae890; 1 drivers
+v0x10aa010_0 .net "carry_temp1", 0 0, L_0x10aeb00; 1 drivers
+v0x10aa0f0_0 .net "sum", 0 0, L_0x10ae9c0; 1 drivers
+v0x10aa190_0 .net "sum_temp", 0 0, L_0x10ae830; 1 drivers
+    .scope S_0x1084830;
+T_0 ;
+    %vpi_call 2 14 "$dumpfile", "binary_adder.vcd";
+    %vpi_call 2 15 "$dumpvars";
+    %end;
+    .thread T_0;
+    .scope S_0x1084830;
+T_1 ;
+    %movi 8, 5, 6;
+    %set/v v0x10ac560_0, 8, 6;
+    %movi 8, 3, 6;
+    %set/v v0x10ac5e0_0, 8, 6;
+    %delay 1000, 0;
+    %movi 8, 5, 6;
+    %set/v v0x10ac560_0, 8, 6;
+    %movi 8, 7, 6;
+    %set/v v0x10ac5e0_0, 8, 6;
+    %delay 1000, 0;
+    %movi 8, 9, 6;
+    %set/v v0x10ac560_0, 8, 6;
+    %movi 8, 2, 6;
+    %set/v v0x10ac5e0_0, 8, 6;
+    %delay 1000, 0;
+    %movi 8, 25, 6;
+    %set/v v0x10ac560_0, 8, 6;
+    %movi 8, 34, 6;
+    %set/v v0x10ac5e0_0, 8, 6;
+    %delay 1000, 0;
+    %vpi_call 2 26 "$finish";
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 5;
+    "N/A";
+    "<interactive>";
+    "src/binary_adder_tb.v";
+    "src/binary_adder.v";
+    "src/full_adder.v";
